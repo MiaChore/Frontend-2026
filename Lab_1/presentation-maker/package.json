@@ -1,0 +1,23 @@
+{
+  "name": "presentation-maker",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "First project on ts",
+  "keywords": [
+    "Frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MiaChore/Frontend-2026/Lab_1"
+  },
+  "license": "ISC",
+  "author": "MiaChore",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.13",
+    "vitest": "^5.0.0"
+  }
+}
