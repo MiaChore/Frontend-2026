@@ -1,5 +1,6 @@
 import type { TextObject, ImageObject } from '../types/object.js';
-import { generateId, Slide } from '../types/slide.js';
+import { Slide } from '../types/slide.js';
+import { generateId } from '../index.js';
 
 //Работа с объектами на слайде
 function addTextObject(slide: Slide, content: string, x: number, y: number, width: number, height: number, fontFamily: string, fontSize: number, fontColor: string): Slide {
@@ -106,3 +107,5 @@ function updateTextObjectStyle(slide: Slide, objectId: string, fontFamily: strin
         objects
     }
 }
+
+export { addTextObject, addImageObject, removeObject, moveObject, resizeObject, updateTextObjectStyle };

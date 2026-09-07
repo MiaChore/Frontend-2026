@@ -1,5 +1,6 @@
+import { generateId } from '../index.js';
 import { Presentation } from '../types/presentation.js';
-import { type Slide , type Background, generateId } from '../types/slide.js';
+import type { Slide, Background} from '../types/slide.js';
 
 //Работа со слайдами
 function addSlide(presentation: Presentation, slideName?: string): Presentation {
@@ -38,7 +39,34 @@ function moveSlide(presentation: Presentation, slideId: string, newIndex: number
         ...presentation,
         slides: slides
     }
-}    
+}
+
+function setActiveSlide(presentation: Presentation, slideId: string): Presentation {
+    const activeSlide = presentation.slides.find((slide) => slide.id === slideId);
+    if (!activeSlide) {
+        throw new Error("Слайд с таким id не найден");
+    }
+    return {
+        ...presentation,
+        activeSlideId: slideId
+    }
+}
+
+function duplicateSlide(presentation: Presentation, slideId: string): Presentation {
+    const slideToDuplicate = presentation.slides.find((slide) => slide.id === slideId);
+    if (!slideToDuplicate) {
+        throw new Error("Слайд с таким id не найден");
+    }
+    const newSlide: Slide = {
+        ...slideToDuplicate,
+        id: generateId(),
+        name: `${slideToDuplicate.name} (Копия)`
+    };
+    return {
+        ...presentation,
+        slides: [...presentation.slides, newSlide]
+    }
+}
 
 //Работа с фоном слайда
 function setSlideBackgroundColor(slide: Slide, color: string): Slide {
@@ -72,3 +100,7 @@ function clearSlideBackground(slide: Slide): Slide {
         background: newBackground
     }
 }
+
+export { addSlide, removeSlides, moveSlide, setActiveSlide, duplicateSlide, 
+    setSlideBackgroundColor, setSlideBackgroundImage, setSlideBackgroundGradient, 
+    clearSlideBackground };

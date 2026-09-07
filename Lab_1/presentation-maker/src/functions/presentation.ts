@@ -1,19 +1,21 @@
 import type { Presentation } from '../types/presentation.js';
-import { generateId } from '../types/slide.js';
+import { generateId } from '../index.js';
 
 //Работы с презентацией
 function createPresentation(name: string): Presentation {
+    const firstSlideId = generateId();
     return {
         id: generateId(),
         name: name,
         slides: [
             {
-                id: generateId(),
+                id: firstSlideId,
                 name: "Первай слайд",
                 background: { type: 'none' },
                 objects: [],
             }
         ],
+        activeSlideId: firstSlideId,
     };
 }
 
@@ -32,3 +34,4 @@ function loadPresentation(json: string): Presentation {
     return JSON.parse(json) as Presentation
 }
 
+export { createPresentation, updatePresentationName, savePresentation, loadPresentation };
