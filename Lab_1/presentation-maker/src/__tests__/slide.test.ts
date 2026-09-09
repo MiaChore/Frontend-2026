@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createPresentation, addSlide, removeSlides, moveSlide, 
-    setSlideBackgroundColor, clearSlideBackground, setActiveSlide, duplicateSlide, setSlideBackgroundImage, setSlideBackgroundGradient } from '../index.js';
+    setSlideBackgroundColor, clearSlideBackground, setActiveSlide, duplicateSlide, setSlideBackgroundImage, setSlideBackgroundGradient, 
+    generateId} from '../index.js';
 
 describe('removeSlides', () => {
     it('Должен удалять слайды с указанными id из презентации', () => {
@@ -116,3 +117,10 @@ describe('DuplicateSlide', () => {
     });
 });
 
+describe('GenerateId', () => {
+    it('Должен генерировать уникальный идентификатор', () => {
+        const id1 = generateId();
+        const id2 = generateId();
+        expect(id1).not.toBe(id2);
+    });
+});
