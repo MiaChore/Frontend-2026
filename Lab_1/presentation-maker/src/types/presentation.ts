@@ -5,7 +5,7 @@ type Presentation = {
     id: string;
     name: string;
     slides: Slide[];
-    activeSlideId: string;
+    activeSlideId: string | null;
 }
 
 export { Presentation };

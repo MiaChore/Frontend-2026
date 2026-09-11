@@ -17,9 +17,22 @@ function addSlide(presentation: Presentation, slideName?: string): Presentation 
 }
 
 function removeSlides(presentation: Presentation, slideIds: string[]): Presentation {
-    return {
-        ...presentation,
-        slides: presentation.slides.filter((slide) => !slideIds.includes(slide.id))
+    const remainingSlides = presentation.slides.filter((slide) => !slideIds.includes(slide.id));
+
+    const activeSlideWasDeleted = presentation.activeSlideId !== null && slideIds.includes(presentation.activeSlideId);
+
+    if (activeSlideWasDeleted) {
+        return {
+            ...presentation,
+            slides: remainingSlides,
+            activeSlideId: remainingSlides[0]?.id || null
+        };
+    } else {
+        return {
+            ...presentation,
+            slides: remainingSlides,
+            activeSlideId: presentation.activeSlideId
+        };
     }
 }
 
