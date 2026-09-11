@@ -24,4 +24,4 @@ type ImageObject = {
 
 type SlideObject = TextObject | ImageObject
 
-export { TextObject, ImageObject, SlideObject};
+export type { TextObject, ImageObject, SlideObject};

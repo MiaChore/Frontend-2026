@@ -1,5 +1,5 @@
 import { generateId } from '../index.js';
-import { Presentation } from '../types/presentation.js';
+import type { Presentation } from '../types/presentation.js';
 import type { Slide, Background} from '../types/slide.js';
 
 //Работа со слайдами

@@ -8,4 +8,4 @@ type Presentation = {
     activeSlideId: string | null;
 }
 
-export { Presentation };
+export type { Presentation };

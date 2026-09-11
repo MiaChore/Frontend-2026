@@ -1,5 +1,5 @@
 import type { TextObject, ImageObject } from '../types/object.js';
-import { Slide } from '../types/slide.js';
+import type { Slide } from '../types/slide.js';
 import { generateId } from '../index.js';
 
 //Работа с объектами на слайде
